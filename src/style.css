@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+/* Import Noto Sans JP from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+
+/* Rakuten Font Setup */
+@font-face {
+  font-family: 'Hiragino Sans';
+  src: local('Hiragino Sans');
+  font-display: swap;
+}
+
+/* Custom styles for cards hover effect */
+.service-card {
+    @apply transition-transform duration-300 ease-in-out;
+}
+
+.service-card:hover {
+    @apply transform -translate-y-2 shadow-lg;
+}
+
+/* Custom gradient for the hero section */
+.hero-gradient {
+    background: #BF0000; /* Rakuten's primary red */
+    background: linear-gradient(to right, #BF0000, #990000); /* Slightly darker for depth */
+}
+
+/* Global font settings */
+body {
+    font-family: 'Hiragino Sans', 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'メイリオ', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Japanese text specific styles */
+.japanese-text {
+    font-feature-settings: "palt";
+    letter-spacing: 0.03em;
+}
+
+/* Add base font settings */
+@layer base {
+  html {
+    font-family: 'Noto Sans JP', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Update the japanese-text utility class */
+.japanese-text {
+  font-family: 'Noto Sans JP', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
