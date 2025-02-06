@@ -1,0 +1,6 @@
+<svg width="200" height="40" viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M20 0H4C1.8 0 0 1.8 0 4v16c0 2.2 1.8 4 4 4h16c2.2 0 4-1.8 4-4V4c0-2.2-1.8-4-4-4z" fill="#FF82A3"/>
+  <text x="32" y="18" font-family="'Noto Sans JP', sans-serif" font-size="16" font-weight="700" fill="#333333">ママわり</text>
+  <path d="M12 6.5c-1.7 0-3 1.3-3 3s1.3 3 3 3 3-1.3 3-3-1.3-3-3-3zm0 4.5c-.8 0-1.5-.7-1.5-1.5S11.2 8 12 8s1.5.7 1.5 1.5S12.8 11 12 11z" fill="white"/>
+  <path d="M12 13c-2.2 0-4 1.8-4 4v1h8v-1c0-2.2-1.8-4-4-4z" fill="white"/>
+</svg> 

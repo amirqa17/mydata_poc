@@ -222,6 +222,14 @@
       </div>
     </div>
 
+    <!-- Add this after successful registration -->
+    <div v-if="registrationComplete" class="mt-8">
+      <CarDetailsCard 
+        :car="registeredCar"
+        @update="handleCarUpdate"
+      />
+    </div>
+
     <TheFooter class="mt-auto" />
   </div>
 </template>
@@ -233,6 +241,7 @@ import TheHeader from './TheHeader.vue'
 import TheFooter from './TheFooter.vue'
 import RakutenLoader from './RakutenLoader.vue'
 import FloatingBackground from './FloatingBackground.vue'
+import CarDetailsCard from './CarDetailsCard.vue'
 
 const router = useRouter()
 const isLoading = ref(false)

@@ -3,25 +3,17 @@
     <div class="container mx-auto px-4">
       <div class="flex justify-between items-center h-16 md:h-20">
         <div class="flex items-center justify-between w-full">
-          <!-- Mobile menu button -->
-          <div class="md:hidden">
-            <button 
-              @click="openMobileSidebar"
-              class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-red-600 focus:outline-none"
-            >
-              <span class="sr-only">メニューを開く</span>
-              <Bars3Icon class="h-6 w-6" />
-            </button>
-          </div>
-
           <!-- Logo -->
           <div class="flex-shrink-0 flex justify-center flex-1 md:flex-initial">
             <a href="/" class="flex items-center">
               <img 
-                src="https://upload.wikimedia.org/wikipedia/commons/6/64/2018_Rakuten_logo.png" 
+                src="@/assets/mydata_logo.png" 
                 alt="Rakuten" 
-                class="h-8 md:h-10 lg:h-12 w-auto"
+                class="h-8 md:h-12 lg:h-14 w-auto"
               />
+              <div class="ml-3 hidden md:block">
+                <h1 class="text-xl font-bold text-gray-900 japanese-text tracking-wider">楽天会員情報管理</h1>
+              </div>
             </a>
           </div>
 
@@ -40,79 +32,85 @@
             <!-- My Discounts Button -->
             <div class="relative discount-menu">
               <button 
-                @click="toggleDiscountMenu"
-                class="flex items-center space-x-2 text-gray-700 hover:text-[#BF0000] transition-colors"
+                @click="isDiscountMenuOpen = !isDiscountMenuOpen"
+                class="flex items-center space-x-3 text-gray-700 hover:text-gray-900 group"
               >
-                <TagIcon class="h-5 w-5" />
-                <span class="text-sm font-medium japanese-text">マイ割引</span>
-                <ChevronDownIcon class="h-4 w-4" :class="{ 'transform rotate-180': isDiscountMenuOpen }" />
-                <!-- Active Discount Counter -->
-                <span class="absolute -top-1 -right-1 bg-[#BF0000] text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
-                  2
-                </span>
+                <div class="p-1.5 rounded-lg bg-red-50 group-hover:bg-red-100 transition-colors">
+                  <SparklesIcon class="w-5 h-5 text-[#BF0000]" />
+                </div>
+                <span class="japanese-text font-medium group-hover:text-[#BF0000] transition-colors">マイわりびき</span>
+                <ChevronDownIcon class="w-5 h-5" :class="{ 'rotate-180': isDiscountMenuOpen }" />
               </button>
 
-              <!-- Discount Management Dropdown -->
-              <div 
-                v-show="isDiscountMenuOpen"
-                class="absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-lg py-4 z-50"
+              <!-- Discount Menu -->
+              <div v-if="isDiscountMenuOpen" 
+                class="absolute right-0 mt-2 w-80 bg-white rounded-xl shadow-xl ring-1 ring-black ring-opacity-5 py-2 z-50 transform transition-all duration-200"
               >
-                <div class="px-4 py-2 border-b">
-                  <div class="flex justify-between items-center">
-                    <h3 class="font-bold text-gray-900 japanese-text">有効な割引</h3>
-                    <button class="text-sm text-[#BF0000] hover:text-red-700 japanese-text">
-                      管理画面へ
-                    </button>
-                  </div>
+                <div class="px-4 py-2 border-b border-gray-100">
+                  <h3 class="text-sm font-medium text-gray-900 japanese-text flex items-center gap-2">
+                    <TagIcon class="w-4 h-4 text-[#BF0000]" />
+                    マイわりびき
+                  </h3>
                 </div>
-
-                <!-- Active Discounts List -->
-                <div class="px-2 py-2">
-                  <div class="space-y-2">
-                    <div class="flex items-center justify-between p-2 hover:bg-gray-50 rounded-lg">
-                      <div class="flex items-center space-x-3">
-                        <div class="w-8 h-8 bg-pink-100 rounded-full flex items-center justify-center">
-                          <UsersIcon class="h-5 w-5 text-pink-600" />
-                        </div>
-                        <div>
-                          <div class="text-sm font-medium text-gray-900 japanese-text">ママわり</div>
-                          <div class="text-xs text-[#BF0000] japanese-text">20% ポイント還元中</div>
-                        </div>
+                
+                <!-- Active Discounts -->
+                <div class="py-2">
+                  <!-- Mamawari -->
+                  <router-link to="/mamawari/manage" 
+                    class="px-4 py-3 flex items-center justify-between hover:bg-gray-50 group transition-colors duration-200"
+                  >
+                    <div class="flex items-center space-x-3">
+                      <div>
+                        <p class="text-sm font-medium text-gray-900 japanese-text group-hover:text-[#BF0000] transition-colors">ママわり</p>
+                        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-indigo-50 text-indigo-700">
+                          フルメンバー
+                        </span>
                       </div>
-                      <span class="text-xs bg-blue-50 text-blue-700 px-2 py-1 rounded-full japanese-text">
-                        フル会員
-                      </span>
                     </div>
+                    <ChevronRightIcon class="w-5 h-5 text-gray-400 group-hover:text-[#BF0000] group-hover:translate-x-0.5 transition-all" />
+                  </router-link>
 
-                    <div class="flex items-center justify-between p-2 hover:bg-gray-50 rounded-lg">
-                      <div class="flex items-center space-x-3">
-                        <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
-                          <HeartIcon class="h-5 w-5 text-purple-600" />
-                        </div>
-                        <div>
-                          <div class="text-sm font-medium text-gray-900 japanese-text">ペットわり</div>
-                          <div class="text-xs text-[#BF0000] japanese-text">15% ポイント還元中</div>
-                        </div>
+                  <!-- Carwari (Incomplete Registration) -->
+                  <router-link to="/carwari/register" 
+                    class="px-4 py-3 flex items-center justify-between hover:bg-gray-50 group transition-colors duration-200"
+                  >
+                    <div class="flex items-center space-x-3">
+                      <div>
+                        <p class="text-sm font-medium text-gray-900 japanese-text group-hover:text-[#BF0000] transition-colors">カーわり</p>
+                        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                          <span class="mr-1.5 w-1.5 h-1.5 rounded-full bg-yellow-500"></span>
+                          登録未完了
+                        </span>
                       </div>
-                      <span class="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full japanese-text">
-                        ベーシック
-                      </span>
                     </div>
-                  </div>
+                    <ChevronRightIcon class="w-5 h-5 text-gray-400 group-hover:text-[#BF0000] group-hover:translate-x-0.5 transition-all" />
+                  </router-link>
+
+                  <!-- Petwari -->
+                  <router-link to="/petwari/manage" 
+                    class="px-4 py-3 flex items-center justify-between hover:bg-gray-50 group transition-colors duration-200"
+                  >
+                    <div class="flex items-center space-x-3">
+                      <div>
+                        <p class="text-sm font-medium text-gray-900 japanese-text group-hover:text-[#BF0000] transition-colors">ペットわり</p>
+                        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700">
+                          ベーシックメンバー
+                        </span>
+                      </div>
+                    </div>
+                    <ChevronRightIcon class="w-5 h-5 text-gray-400 group-hover:text-[#BF0000] group-hover:translate-x-0.5 transition-all" />
+                  </router-link>
                 </div>
-
-                <!-- Quick Actions -->
-                <div class="border-t mt-2 pt-2 px-4">
-                  <div class="grid grid-cols-2 gap-2">
-                    <button class="flex items-center space-x-2 text-sm text-gray-600 hover:text-[#BF0000] p-2 rounded-lg hover:bg-gray-50 japanese-text">
-                      <ChartBarIcon class="h-4 w-4" />
-                      <span>利用状況</span>
-                    </button>
-                    <button class="flex items-center space-x-2 text-sm text-gray-600 hover:text-[#BF0000] p-2 rounded-lg hover:bg-gray-50 japanese-text">
-                      <BellIcon class="h-4 w-4" />
-                      <span>通知設定</span>
-                    </button>
-                  </div>
+                
+                <!-- Menu Footer -->
+                <div class="px-4 py-2 border-t border-gray-100 bg-gray-50">
+                  <router-link 
+                    to="/my-discounts"
+                    class="flex items-center justify-between text-sm text-[#BF0000] hover:text-red-700 japanese-text font-medium group"
+                  >
+                    マイ割引
+                    <ChevronRightIcon class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                  </router-link>
                 </div>
               </div>
             </div>
@@ -383,7 +381,8 @@ import {
   SparklesIcon,
   TagIcon,
   ChartBarIcon,
-  BellIcon
+  BellIcon,
+  ChevronRightIcon
 } from '@heroicons/vue/24/outline'
 import LanguageSwitcher from './LanguageSwitcher.vue'
 
@@ -494,17 +493,15 @@ onMounted(() => {
 onUnmounted(() => {
   document.removeEventListener('click', handleGlobalClick)
 })
-
-const sidebarRef = ref(null)
-
-const openMobileSidebar = () => {
-  sidebarRef.value?.openMobileSidebar()
-}
 </script>
 
 <style scoped>
 /* Add styles to handle mobile menu positioning */
 .mobile-menu-open {
   overflow: hidden;
+}
+
+.router-link-active {
+  @apply text-[#BF0000];
 }
 </style> 

@@ -1,0 +1,5 @@
+<svg width="200" height="40" viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M20 0H4C1.8 0 0 1.8 0 4v16c0 2.2 1.8 4 4 4h16c2.2 0 4-1.8 4-4V4c0-2.2-1.8-4-4-4z" fill="#4B9EF9"/>
+  <text x="32" y="18" font-family="'Noto Sans JP', sans-serif" font-size="16" font-weight="700" fill="#333333">カーわり</text>
+  <path d="M17 11l-1-4H8L7 11H4v2h1l1 1v3h2v-1h8v1h2v-3l1-1h1v-2h-3zm-8.5 2c-.8 0-1.5-.7-1.5-1.5S7.7 10 8.5 10s1.5.7 1.5 1.5-.7 1.5-1.5 1.5zm7 0c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5 1.5.7 1.5 1.5-.7 1.5-1.5 1.5z" fill="white"/>
+</svg> 

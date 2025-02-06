@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../components/HomePage.vue'
 import MamawariRegistration from '../components/MamawariRegistration.vue'
 import CarwariRegistration from '../components/CarwariRegistration.vue'
+import MyDiscountsPage from '../components/MyDiscountsPage.vue'
+import ManageChildrenPage from '../components/ManageChildrenPage.vue'
 import { ref } from 'vue'
 
 // Create a reactive isLoading state
@@ -30,6 +32,24 @@ const routes = [
     component: CarwariRegistration,
     meta: {
       title: 'カーわり登録 | 楽天マイデータ'
+    }
+  },
+  {
+    path: '/my-discounts',
+    name: 'MyDiscounts',
+    component: MyDiscountsPage,
+    meta: {
+      requiresAuth: true,
+      title: 'マイ割引管理'
+    }
+  },
+  {
+    path: '/mamawari/manage',
+    name: 'ManageChildren',
+    component: ManageChildrenPage,
+    meta: {
+      requiresAuth: true,
+      title: 'お子様情報の管理'
     }
   }
 ]
